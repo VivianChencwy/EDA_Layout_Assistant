@@ -1,8 +1,43 @@
-# Automated Matching System Design for Resistors and Capacitors in Analog IC Layout
-This project focuses on the design of an automated matching system for resistors and capacitors in analog integrated circuit (IC) layouts. In analog IC design, precise matching of resistors and capacitors is critical, as device mismatches can significantly impact overall circuit performance. Traditionally, integrated resistors and capacitors exhibit large errors (±20% to ±30%). This project aims to optimize the layout of these matching devices by developing an automated layout system to reduce mismatch rates.
+# Analog IC Matching Layout Tool
 
-The research emphasizes the identification and implementation of optimal matching rules for resistor and capacitor layouts using automation tools. The project employs the Python programming language and the gdstk library to develop an Electronic Design Automation (EDA) tool for automated layout generation. By defining matching rules and leveraging heuristic algorithms, the system optimizes device placement to minimize mismatches. Additionally, Monte Carlo simulation techniques are used to evaluate the performance of the generated layouts, validating the effectiveness of the automated approach.
+This project develops an **automated layout system** for matching resistors and capacitors in analog integrated circuit (IC) designs. Precise matching is critical to minimize errors that impact circuit performance. Built with Python and the `gdstk` library, this tool optimizes device layouts to reduce mismatch rates, streamlining the design process.
 
-Simulation results demonstrate that the automated matching layouts significantly improve the matching accuracy of resistors and capacitors compared to traditional manual layouts, reducing mismatches caused by process variations. Although parasitic capacitance in capacitor layouts, due to unoptimized routing, slightly affects performance, the automated layout tool shows clear advantages in shortening design cycles and enhancing design efficiency.
+## Features
 
-Future work will focus on optimizing routing algorithms, expanding matching rules to accommodate diverse process requirements, and developing a more user-friendly design interface to improve reliability and efficiency. These enhancements are expected to make the automated matching layout tool more practical and competitive in the field of analog IC design.
+- **Automated Layout Generation**: Creates optimized resistor and capacitor layouts using matching rules and heuristic algorithms.
+- **Resistor Matching**: Supports interdigitated structures, symmetric arrangements, and user-defined parameters like magnification.
+- **Capacitor Matching**: Uses 2D arrays with simulated annealing for dispersion optimization and square-shaped designs.
+- **Performance Validation**: Employs Monte Carlo simulations to test mismatch rates under process variations.
+- **EDA Integration**: Outputs GDSII files compatible with IC design workflows.
+
+## Why It Matters
+
+In analog ICs, resistors and capacitors often have errors of ±20–30%. This tool automates the layout of matching devices, ensuring similar process conditions and reducing mismatches. Compared to manual layouts, it improves accuracy and cuts design time.
+
+## Implementation
+
+### Tech Stack
+- **Python**: Core programming language.
+- **gdstk**: For GDSII file generation and polygon drawing.
+- **Simulated Annealing**: Optimizes capacitor array dispersion.
+- **Monte Carlo Simulation**: Evaluates layout performance.
+
+### Matching Rules
+- **Resistors**: Identical geometries, same material, aligned orientation, interdigitated arrays, optional even-segment arrays.
+- **Capacitors**: Square shapes, same material, aligned centroids, cross-coupled arrays, compact square-like layouts.
+
+### Workflow
+1. Define resistor/capacitor values and layout preferences.
+2. Generate layouts using heuristic algorithms for optimal matching.
+3. Output GDSII files for resistors (symmetric or even-segment) and capacitors (2D arrays).
+4. Validate with Monte Carlo simulations to measure mismatch rates.
+
+## Results
+
+- **Resistors**: Reduced average mismatch by 37.5% and standard deviation by 14.3% compared to Cadence Virtuoso's standard layouts.
+- **Capacitors**: Improved standard deviation by 48.9%, but parasitic capacitance from manual routing increased average mismatch.
+- **Efficiency**: Significantly shortened design cycles compared to manual methods.
+
+*Sample Outputs*:
+- Resistor Layout (Symmetric, Even Segments): [Image Placeholder]
+- Capacitor Array: [Image Placeholder]
